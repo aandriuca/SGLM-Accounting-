@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TikTok Connected — SGML Accounting</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://sgmlaccounting.com/tiktok-connected/">
+<link rel="stylesheet" href="/assets/pages.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+</head>
+<body>
+  <header class="site-header"><div class="bar">
+    <a class="brand" href="/"><span class="mark">S</span><span class="name"><b>SGML</b><span>Accounting</span></span></a>
+    <nav class="nav"><a href="/insights/">Insights</a><a class="btn" href="https://calendar.app.google/D3NFqoGm76qRHwKR8" target="_blank" rel="noopener">Book a Meeting</a></nav>
+  </div></header>
+  <main><div class="wrap">
+    <p class="kicker">TikTok</p>
+    <h1>&#9989; TikTok connected</h1>
+    <p>SGML Accounting is now authorized to publish content to its TikTok account.
+    You can close this window and return to the app.</p>
+    <p style="margin-top:1.6rem"><strong>Authorization code</strong> &mdash; used once by the app to finish connecting:</p>
+    <input id="code" readonly onclick="this.select()"
+      style="width:100%;max-width:600px;padding:.65rem .85rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.82rem;border:1px solid #d8d2c4;border-radius:8px;background:#fff;color:#0E2B22">
+    <p id="status" style="color:#6b6657;font-size:.9rem;margin-top:.7rem"></p>
+  </div></main>
+  <footer class="site-footer"><div class="bar">
+    <div>&copy; 2026 SGML Accounting &mdash; go beyond the numbers.</div>
+    <div class="links"><a href="/">Home</a><a href="/insights/">Insights</a><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="mailto:info@sgmlaccounting.com">Contact</a></div>
+  </div></footer>
+  <script>
+    var c = new URLSearchParams(location.search).get('code') || '';
+    document.getElementById('code').value = c;
+    document.getElementById('status').textContent = c
+      ? 'Connected successfully — authorization code received.'
+      : 'No authorization code found in the URL.';
+  </script>
+</body>
+</html>
