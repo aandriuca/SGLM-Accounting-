@@ -31,8 +31,8 @@
   </script>
   <style>
     .full{max-width:1080px;margin:0 auto;padding:0 24px}
-    .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;padding:26px 0 14px}
-    .hero h1{font-size:2.85rem}
+    .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;padding:34px 0 18px}
+    .hero h1{font-size:3.4rem;letter-spacing:-.02em;line-height:1.06}
     .hero .lead{font-size:1.22rem;max-width:34rem;margin:14px 0 22px}
     .starting{color:var(--green-2);font-weight:600;margin:0 0 22px}
     .cta-btn{display:inline-block;background:var(--green);color:var(--cream);font-weight:600;
@@ -53,7 +53,7 @@
     .band p{color:#d6e0d9;max-width:40rem;margin:0 auto 22px}
     .band .cta-btn{background:var(--gold);border-color:var(--gold);color:var(--green)}
     .band .cta-btn:hover{background:var(--cream);border-color:var(--cream)}
-    .section{padding:44px 0 8px}
+    .section{padding:66px 0 8px}
     .section .eyebrow{font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-dk);font-weight:600}
     .section h2{font-family:var(--font-display);color:var(--green);font-size:2rem;margin:8px 0 26px;font-weight:700}
     .qgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:18px}
@@ -80,11 +80,13 @@
         <span class="mark">S</span>
         <span class="name"><b>SGML</b><span>Accounting</span></span>
       </a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Menu">
+      <label for="nav-toggle" class="hamburger" aria-hidden="true"><span></span><span></span><span></span></label>
       <nav class="nav">
         <a href="/how-we-work/">How we work</a>
         <a href="/about/">About</a>
         <a href="/insights/">Insights</a>
-        <a class="btn" href="/book/">Book a Meeting</a>
+        <a class="btn" href="/book/">Book a 20-minute review</a>
       </nav>
     </div>
   </header>
@@ -105,22 +107,29 @@
         <div class="viz" aria-label="Illustrative peer comparison chart">
           <div class="viz-t">See how you compare</div>
           <div class="viz-s">Your business vs. businesses like yours</div>
-          <svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto">
+          <svg viewBox="0 0 360 214" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto">
             <g font-family="Hanken Grotesk, sans-serif" font-size="12" fill="#5d655f">
-              <text x="0" y="28">Gross margin</text>
-              <rect x="0" y="34" width="330" height="10" rx="5" fill="#efe9dc"/>
-              <rect x="0" y="34" width="210" height="10" rx="5" fill="#0e2b22"/>
-              <rect x="0" y="48" width="260" height="10" rx="5" fill="#c9a24b"/>
+              <text x="0" y="26">Gross margin</text>
+              <rect x="0" y="32" width="330" height="11" rx="5.5" fill="#efe9dc"/>
+              <rect x="0" y="32" width="205" height="11" rx="5.5" fill="#0e2b22"/>
+              <rect x="0" y="47" width="262" height="11" rx="5.5" fill="#c9a24b"/>
+              <polygon points="256,42 268,42 262,49" fill="#b4873a"/>
 
-              <text x="0" y="88">Cash on hand</text>
-              <rect x="0" y="94" width="330" height="10" rx="5" fill="#efe9dc"/>
-              <rect x="0" y="94" width="150" height="10" rx="5" fill="#0e2b22"/>
-              <rect x="0" y="108" width="235" height="10" rx="5" fill="#c9a24b"/>
+              <text x="0" y="90">Cash on hand</text>
+              <rect x="0" y="96" width="330" height="11" rx="5.5" fill="#efe9dc"/>
+              <rect x="0" y="96" width="150" height="11" rx="5.5" fill="#0e2b22"/>
+              <rect x="0" y="111" width="238" height="11" rx="5.5" fill="#c9a24b"/>
+              <polygon points="232,106 244,106 238,113" fill="#b4873a"/>
 
-              <text x="0" y="148">Cost efficiency</text>
-              <rect x="0" y="154" width="330" height="10" rx="5" fill="#efe9dc"/>
-              <rect x="0" y="154" width="185" height="10" rx="5" fill="#0e2b22"/>
-              <rect x="0" y="168" width="250" height="10" rx="5" fill="#c9a24b"/>
+              <text x="0" y="154">Cost efficiency</text>
+              <rect x="0" y="160" width="330" height="11" rx="5.5" fill="#efe9dc"/>
+              <rect x="0" y="160" width="185" height="11" rx="5.5" fill="#0e2b22"/>
+              <rect x="0" y="175" width="250" height="11" rx="5.5" fill="#c9a24b"/>
+              <polygon points="244,170 256,170 250,177" fill="#b4873a"/>
+
+              <line x1="0" y1="196" x2="330" y2="196" stroke="#e6e0d2"/>
+              <text x="0" y="210" font-size="10.5">Lower</text>
+              <text x="300" y="210" font-size="10.5">Higher</text>
             </g>
           </svg>
           <div class="legend">
@@ -202,5 +211,6 @@
       </div>
     </div>
   </footer>
+  <div class="mobile-cta"><a href="/book/" onclick="gtag('event','book_click',{'source':'home_sticky'})">Book a 20-minute review</a></div>
 </body>
 </html>

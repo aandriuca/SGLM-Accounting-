@@ -1,6 +1,5 @@
-/* SGML Accounting — shared styles for static pages (terms, privacy, insights).
-   Matches the main site: cream bg, forest green + gold, Source Serif headings,
-   Hanken Grotesk body. Loaded by /terms, /privacy, /insights pages. */
+/* SGML Accounting — shared styles for all static pages.
+   Cream bg, forest green + gold, Source Serif headings, Hanken Grotesk body. */
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap');
 
@@ -14,15 +13,18 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--cream);color:var(--ink);font-family:var(--font-sans);
-  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  font-size:17px;line-height:1.68;-webkit-font-smoothing:antialiased;
+  border-top:2px solid var(--gold)} /* quiet metallic thread across the top */
 a{color:var(--green);text-decoration:underline;text-underline-offset:2px;
   text-decoration-thickness:1px}
 a:hover{color:var(--gold-dk)}
 .wrap{max-width:760px;margin:0 auto;padding:0 24px}
+.wide{max-width:1080px;margin:0 auto;padding:0 24px} /* positioning-page heros breathe */
 
 /* ---- header ---- */
-.site-header{border-bottom:1px solid var(--line);background:var(--cream)}
-.site-header .bar{max-width:1080px;margin:0 auto;padding:18px 24px;
+.site-header{border-bottom:1px solid var(--line);background:var(--cream);
+  box-shadow:0 1px 0 rgba(201,162,75,.35)} /* hairline gold under the header */
+.site-header .bar{max-width:1080px;margin:0 auto;padding:18px 24px;position:relative;
   display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
 .brand .mark{width:42px;height:42px;border-radius:9px;background:var(--green);
@@ -37,40 +39,58 @@ a:hover{color:var(--gold-dk)}
 .nav a:not(.btn){color:var(--ink);text-decoration:none;font-weight:500;font-size:15px}
 .nav a:hover{color:var(--green)}
 .btn{background:var(--green);color:var(--cream);text-decoration:none;
-  padding:11px 20px;border-radius:9px;font-weight:600;font-size:15px;
+  padding:11px 20px;border-radius:9px;font-weight:600;font-size:15px;white-space:nowrap;
   display:inline-flex;align-items:center;gap:8px;transition:background .15s}
 .btn:hover{background:var(--green-2);color:var(--cream)}
+/* mobile hamburger (hidden on desktop) */
+.nav-toggle{position:absolute;opacity:0;pointer-events:none}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;
+  width:44px;height:40px;cursor:pointer}
+.hamburger span{display:block;height:2px;width:24px;background:var(--green);border-radius:2px}
 
 /* ---- page content ---- */
-main{padding:56px 0 72px}
+main{padding:72px 0 92px}
 .kicker{font-size:13px;letter-spacing:2.5px;text-transform:uppercase;
   color:var(--gold-dk);font-weight:600;margin-bottom:14px}
-main h1{font-family:var(--font-display);font-size:2.5rem;line-height:1.12;
-  color:var(--green);font-weight:700;margin-bottom:10px;letter-spacing:-.5px}
-main h2{font-family:var(--font-display);font-size:1.5rem;color:var(--green);
-  font-weight:600;margin:36px 0 12px}
+main h1{font-family:var(--font-display);font-size:2.75rem;line-height:1.1;
+  color:var(--green);font-weight:700;margin-bottom:12px;letter-spacing:-.8px}
+main h2{font-family:var(--font-display);font-size:1.72rem;color:var(--green);
+  font-weight:600;margin:42px 0 12px}
 main h3{font-size:1.15rem;font-weight:600;color:var(--ink);margin:26px 0 8px}
-main p{margin:0 0 16px}
-main ul,main ol{margin:0 0 16px 22px}
-main li{margin:6px 0}
+main p{margin:0 0 18px;line-height:1.72}
+main ul,main ol{margin:0 0 18px 22px}
+main li{margin:7px 0}
 main strong{color:var(--green-2)}
-.lead{font-size:1.18rem;color:var(--muted);margin-bottom:8px}
+.lead{font-size:1.2rem;color:var(--muted);margin-bottom:8px;line-height:1.6}
 .updated{color:var(--muted);font-size:14px;margin-bottom:8px}
-.rule{height:1px;background:var(--line);border:0;margin:30px 0}
+.rule{height:1px;background:var(--line);border:0;margin:34px 0}
 .answer{background:var(--cream-2);border-left:3px solid var(--gold);
   padding:18px 22px;border-radius:0 10px 10px 0;font-size:1.12rem;margin:0 0 28px}
+.pullquote{font-family:var(--font-display);font-size:1.5rem;line-height:1.38;
+  color:var(--green);border-left:4px solid var(--gold);padding:4px 0 4px 22px;margin:30px 0}
 table{width:100%;border-collapse:collapse;margin:18px 0;font-size:15px}
 th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
 th{background:var(--cream-2);font-weight:600;color:var(--green)}
 .note{background:#fff;border:1px solid var(--line);border-radius:10px;
   padding:16px 18px;font-size:14px;color:var(--muted);margin:24px 0}
 
+/* ---- peer-comparison mini chart (recurs across pages) ---- */
+.chart-mini{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:8px 0 20px}
+.chart-mini .viz-t{font-family:var(--font-display);color:var(--green);font-weight:600;font-size:1rem}
+.chart-mini .viz-s{color:var(--muted);font-size:.8rem;margin-bottom:12px}
+.chart-mini .legend{display:flex;gap:18px;font-size:.78rem;color:var(--muted);margin-top:6px}
+.chart-mini .dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:middle}
+.chart-mini .ex{color:var(--muted);font-size:.7rem;margin-top:10px;font-style:italic}
+.bar-grow{transform:scaleX(0);transform-origin:left;animation:grow .6s ease-out forwards}
+@keyframes grow{to{transform:scaleX(1)}}
+
 /* ---- insights list ---- */
-.card-grid{display:grid;gap:18px;margin-top:30px}
+.card-grid{display:grid;gap:18px;margin-top:22px}
+.vgroup{font-family:var(--font-display);color:var(--green);font-size:1.3rem;font-weight:600;margin:34px 0 6px}
 .card{background:#fff;border:1px solid var(--line);border-radius:12px;
   padding:24px 26px;text-decoration:none;display:block;transition:border-color .15s,transform .15s}
 .card:hover{border-color:var(--gold);transform:translateY(-2px)}
-.card h2{font-size:1.3rem;margin:0 0 8px}
+.card h2{font-size:1.25rem;margin:0 0 8px}
 .card p{color:var(--muted);margin:0;font-size:15px}
 
 /* ---- footer ---- */
@@ -81,7 +101,25 @@ th{background:var(--cream-2);font-weight:600;color:var(--green)}
 .site-footer a{color:var(--muted)}
 .site-footer .links{display:flex;gap:18px;flex-wrap:wrap}
 
+/* ---- sticky mobile Book bar (hidden on desktop) ---- */
+.mobile-cta{display:none}
+
 @media(max-width:640px){
-  main h1{font-size:1.95rem}
-  .nav{gap:14px}.nav a:not(.btn){display:none}
+  main{padding:44px 0 76px}
+  main h1{font-size:2.05rem}
+  /* hamburger nav */
+  .hamburger{display:flex}
+  .nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;
+    align-items:stretch;gap:0;background:var(--cream);border-bottom:1px solid var(--line);
+    box-shadow:0 8px 24px rgba(14,43,34,.1);padding:6px 0;z-index:40}
+  .nav-toggle:checked ~ .nav{display:flex}
+  .nav a:not(.btn){display:block;padding:13px 24px;font-size:16px;border-top:1px solid var(--line)}
+  .nav .btn{margin:10px 24px;justify-content:center}
+  /* sticky bottom Book bar */
+  body{padding-bottom:66px}
+  .mobile-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;
+    padding:10px 14px;background:var(--cream);border-top:1px solid var(--line);
+    box-shadow:0 -4px 20px rgba(14,43,34,.1)}
+  .mobile-cta a{flex:1;text-align:center;background:var(--green);color:var(--cream);
+    text-decoration:none;font-weight:600;padding:13px;border-radius:10px}
 }
