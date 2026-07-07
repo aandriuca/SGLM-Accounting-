@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SGML Accounting — know what your numbers mean, and what to do next</title>
+  <meta name="description" content="Premium financial intelligence and flawless compliance for Ontario e-commerce and property management owners. See how you compare to businesses like yours, catch issues early, and always know what to do next.">
+  <link rel="stylesheet" href="/assets/pages.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <style>
+    /* ============ v2 homepage — richer visual layer, same brand ============ */
+    .full{max-width:1120px;margin:0 auto;padding:0 24px}
+
+    /* ---- HERO ---- */
+    .hero{display:grid;grid-template-columns:1.02fr .98fr;gap:40px;align-items:center;
+      padding:40px 0 26px}
+    .hero h1{font-family:var(--font-display);font-size:3.7rem;letter-spacing:-.022em;
+      line-height:1.05;color:var(--green);font-weight:700}
+    .hero h1 .u{background:linear-gradient(transparent 66%,rgba(201,162,75,.38) 66%)}
+    .hero .lead{font-size:1.24rem;color:var(--muted);max-width:34rem;margin:16px 0 14px;line-height:1.55}
+    .starting{color:var(--green-2);font-weight:600;margin:0 0 22px;font-size:1.02rem}
+    .cta-btn{display:inline-block;background:var(--green);color:var(--cream);font-weight:600;
+      padding:.95rem 1.7rem;border-radius:10px;text-decoration:none;font-size:1.06rem;
+      border:2px solid var(--green);transition:background .15s,color .15s,border-color .15s,transform .15s}
+    .cta-btn:hover{background:var(--gold);border-color:var(--gold);color:var(--green);transform:translateY(-1px)}
+    .cta-sub{color:var(--muted);font-size:.95rem;margin-top:11px}
+
+    /* floating insight-card stage */
+    .stage{position:relative;min-height:430px}
+    .ins{background:#fff;border:1px solid var(--line);border-radius:16px;
+      box-shadow:0 10px 40px rgba(14,43,34,.10);padding:20px 22px}
+    .ins-main{position:relative;z-index:2}
+    .ins .t{font-family:var(--font-display);color:var(--green);font-weight:600;font-size:1.05rem}
+    .ins .s{color:var(--muted);font-size:.8rem;margin-bottom:14px}
+    .ins .legend{display:flex;gap:18px;font-size:.78rem;color:var(--muted);margin-top:6px}
+    .ins .dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:middle}
+    .ins .callout{background:var(--cream-2);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;
+      padding:9px 13px;margin:13px 0 2px;font-size:.9rem;color:var(--green-2)}
+    .ins .ex{color:var(--muted);font-size:.7rem;margin-top:11px;font-style:italic}
+    .ins-float{position:absolute;z-index:3;padding:14px 16px;width:230px;
+      box-shadow:0 16px 44px rgba(14,43,34,.16)}
+    .ins-report{top:-26px;right:-14px;animation:loadup .7s ease .15s both, floaty 6s ease-in-out 1s infinite}
+    .ins-alert{bottom:-24px;left:-20px;animation:loadup .7s ease .3s both, floaty 7s ease-in-out 1.3s infinite}
+    .ins-float .badge{display:inline-flex;align-items:center;gap:7px;font-size:.72rem;font-weight:700;
+      letter-spacing:.06em;text-transform:uppercase}
+    .ins-float .row{display:flex;align-items:center;gap:8px;font-size:.86rem;color:var(--ink);margin-top:9px}
+    .ck{width:17px;height:17px;border-radius:50%;background:var(--green);color:#fff;flex:none;
+      display:inline-flex;align-items:center;justify-content:center;font-size:11px}
+    .gdot{width:9px;height:9px;border-radius:50%;background:var(--gold);flex:none;box-shadow:0 0 0 4px rgba(201,162,75,.18)}
+    @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+
+    /* ---- trust stats band ---- */
+    .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--cream-2)}
+    .stats .full{display:flex;flex-wrap:wrap;gap:18px 40px;justify-content:center;align-items:center;padding:22px 24px}
+    .stat{text-align:center}
+    .stat b{display:block;font-family:var(--font-display);color:var(--green);font-size:1.7rem;font-weight:700;line-height:1}
+    .stat span{color:var(--muted);font-size:.82rem;letter-spacing:.04em}
+    .stat-sep{width:1px;height:30px;background:var(--line)}
+
+    /* ---- relevance strip ---- */
+    .rel{padding:26px 0 4px}
+    .rel .full{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;justify-content:center}
+    .rel .lab{color:var(--gold-dk);font-size:12px;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;margin-right:6px}
+    .chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 16px;
+      font-size:.9rem;color:var(--green-2);font-weight:500}
+
+    /* ---- pillar zig-zag rows ---- */
+    .pillars{padding:56px 0 8px}
+    .pillars .head{text-align:center;max-width:40rem;margin:0 auto 40px}
+    .pillars .eyebrow{font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-dk);font-weight:600}
+    .pillars .head h2{font-family:var(--font-display);color:var(--green);font-size:2.15rem;margin:8px 0 0;font-weight:700}
+    .pillar{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;padding:30px 0}
+    .pillar:nth-child(even) .p-media{order:2}
+    .pillar .p-num{font-family:var(--font-display);color:var(--gold);font-size:1rem;font-weight:700;letter-spacing:.1em}
+    .pillar h3{font-family:var(--font-display);color:var(--green);font-size:1.7rem;margin:6px 0 10px;font-weight:700}
+    .pillar p{color:var(--muted);font-size:1.05rem;margin:0 0 14px;line-height:1.6}
+    .pillar .p-link{color:var(--green);font-weight:600;text-decoration:none;font-size:.98rem;border-bottom:2px solid var(--gold);padding-bottom:2px}
+
+    /* mock cards inside pillars */
+    .mock{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 24px;
+      box-shadow:0 10px 40px rgba(14,43,34,.09)}
+    .mock .mh{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+    .mock .mh .t{font-family:var(--font-display);color:var(--green);font-weight:600;font-size:1.05rem}
+    .mock .tag{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+      color:var(--gold-dk);background:rgba(201,162,75,.14);border-radius:999px;padding:4px 10px}
+    .mrow{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:.92rem;color:var(--ink)}
+    .mrow:first-of-type{border-top:0}
+    .mrow .rt{margin-left:auto;color:var(--muted);font-size:.84rem}
+    .mock .ex{color:var(--muted);font-size:.7rem;margin-top:12px;font-style:italic}
+
+    /* ---- founder band ---- */
+    .founder{background:var(--green);color:var(--cream);margin-top:60px}
+    .founder .full{display:grid;grid-template-columns:.8fr 1.2fr;gap:44px;align-items:center;padding:56px 24px}
+    .founder .photo{border-radius:18px;overflow:hidden;border:1px solid rgba(201,162,75,.4);
+      box-shadow:0 20px 60px rgba(0,0,0,.3);background:var(--green-2);aspect-ratio:4/5;
+      display:flex;align-items:center;justify-content:center;position:relative}
+    .founder .photo img{width:100%;height:100%;object-fit:cover;object-position:center 28%}
+    .founder .ph-ph{color:rgba(250,249,245,.5);text-align:center;font-size:.85rem;padding:20px}
+    .founder .ph-ph .ring{width:64px;height:64px;border-radius:50%;border:1.5px solid var(--gold);
+      color:var(--gold);font-family:var(--font-display);font-size:30px;display:flex;align-items:center;
+      justify-content:center;margin:0 auto 12px}
+    .founder .eyebrow{font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:600}
+    .founder h2{font-family:var(--font-display);color:var(--cream);font-size:2rem;margin:10px 0 14px;font-weight:700}
+    .founder p{color:#d6e0d9;margin:0 0 14px;font-size:1.06rem;line-height:1.62}
+    .founder .sig{font-family:var(--font-display);color:var(--gold);font-size:1.1rem;margin-top:6px}
+    .founder .sig small{display:block;color:#aebbb2;font-family:var(--font-sans);font-size:.8rem;
+      letter-spacing:.04em;text-transform:uppercase;margin-top:3px}
+
+    /* ---- existing sections reused ---- */
+    .section{padding:60px 0 8px}
+    .section .eyebrow{font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-dk);font-weight:600}
+    .section h2{font-family:var(--font-display);color:var(--green);font-size:2rem;margin:8px 0 26px;font-weight:700}
+    .qgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:18px}
+    .qcard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 24px;transition:transform .15s,border-color .15s}
+    .qcard:hover{transform:translateY(-2px);border-color:var(--gold)}
+    .qcard h3{color:var(--green);font-family:var(--font-display);font-size:1.12rem;margin:0 0 8px}
+    .qcard p{color:var(--muted);font-size:.98rem;margin:0}
+    .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .vcard{background:var(--cream-2);border-radius:14px;padding:26px 28px}
+    .vcard h3{color:var(--green);font-family:var(--font-display);font-size:1.3rem;margin:0 0 10px}
+    .vcard ul{margin:0;padding-left:1.1rem;color:var(--ink)}
+    .vcard li{margin:6px 0}
+
+    .band{background:var(--green);color:var(--cream)}
+    .band .full{padding:56px 24px;text-align:center}
+    .band h2{font-family:var(--font-display);color:var(--cream);font-size:2rem;margin:0 0 8px}
+    .band p{color:#d6e0d9;max-width:40rem;margin:0 auto 22px}
+    .band .cta-btn{background:var(--gold);border-color:var(--gold);color:var(--green)}
+    .band .cta-btn:hover{background:var(--cream);border-color:var(--cream)}
+
+    /* ---- scroll reveal (JS-gated: without JS, everything is visible) ---- */
+    .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+    .js .reveal.in{opacity:1;transform:none}
+    /* hero pieces fade up on load, independent of the scroll observer */
+    .load-up{animation:loadup .7s ease both}
+    @keyframes loadup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+    @media(max-width:860px){
+      .hero{grid-template-columns:1fr;gap:34px;padding-top:24px}
+      .hero h1{font-size:2.4rem}
+      .stage{min-height:0;margin-top:6px}
+      .ins-float{position:static;width:auto;margin-top:14px;animation:none}
+      .ins-report,.ins-alert{inset:auto}
+      .pillar{grid-template-columns:1fr;gap:22px;padding:24px 0}
+      .pillar:nth-child(even) .p-media{order:0}
+      .vgrid{grid-template-columns:1fr}
+      .founder .full{grid-template-columns:1fr;gap:26px;text-align:center}
+      .founder .photo{max-width:280px;margin:0 auto}
+      .stat-sep{display:none}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .load-up,.ins-report,.ins-alert{animation:none}
+      .js .reveal{opacity:1;transform:none;transition:none}
+    }
+  </style>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="bar">
+      <a class="brand" href="/">
+        <span class="mark">S</span>
+        <span class="name"><b>SGML</b><span>Accounting</span></span>
+      </a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Menu">
+      <label for="nav-toggle" class="hamburger" aria-hidden="true"><span></span><span></span><span></span></label>
+      <nav class="nav">
+        <a href="/how-we-work/">How we work</a>
+        <a href="/about/">About</a>
+        <a href="/insights/">Insights</a>
+        <a href="/terms/">Terms</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="mailto:info@sgmlaccounting.com">Contact</a>
+        <a class="btn" href="/book/">Book a 20-minute review</a>
+      </nav>
+    </div>
+  </header>
+
+  <main style="padding:0">
+    <!-- HERO -->
+    <div class="full">
+      <div class="hero">
+        <div>
+          <p class="kicker">For Ontario e-commerce &amp; property owners</p>
+          <h1>Your books are done. Now know <span class="u">what to do next.</span></h1>
+          <p class="lead">Premium financial intelligence and flawless compliance &mdash; so you can see how
+          you compare, catch issues early, and always know your next move.</p>
+          <p class="starting">Flawless compliance is the starting line, not the finish line.</p>
+          <a class="cta-btn" href="/book/">Book a 20-minute review &rarr;</a>
+          <p class="cta-sub">Free &middot; no pitch &middot; a clear picture of where you stand</p>
+        </div>
+
+        <div class="stage">
+          <!-- main insight card: peer comparison -->
+          <div class="ins ins-main load-up">
+            <div class="t">See how you compare</div>
+            <div class="s">Your business vs. businesses like yours</div>
+            <svg viewBox="0 0 360 214" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto">
+              <g font-family="Hanken Grotesk, sans-serif" font-size="12" fill="#5d655f">
+                <text x="0" y="26">Gross margin</text>
+                <rect x="0" y="32" width="330" height="11" rx="5.5" fill="#efe9dc"/>
+                <rect x="0" y="32" width="205" height="11" rx="5.5" fill="#0e2b22"/>
+                <rect x="0" y="47" width="262" height="11" rx="5.5" fill="#c9a24b"/>
+                <polygon points="256,42 268,42 262,49" fill="#b4873a"/>
+                <text x="0" y="90">Cash on hand</text>
+                <rect x="0" y="96" width="330" height="11" rx="5.5" fill="#efe9dc"/>
+                <rect x="0" y="96" width="150" height="11" rx="5.5" fill="#0e2b22"/>
+                <rect x="0" y="111" width="238" height="11" rx="5.5" fill="#c9a24b"/>
+                <polygon points="232,106 244,106 238,113" fill="#b4873a"/>
+                <text x="0" y="154">Cost efficiency</text>
+                <rect x="0" y="160" width="330" height="11" rx="5.5" fill="#efe9dc"/>
+                <rect x="0" y="160" width="185" height="11" rx="5.5" fill="#0e2b22"/>
+                <rect x="0" y="175" width="250" height="11" rx="5.5" fill="#c9a24b"/>
+                <polygon points="244,170 256,170 250,177" fill="#b4873a"/>
+                <line x1="0" y1="196" x2="330" y2="196" stroke="#e6e0d2"/>
+                <text x="0" y="210" font-size="10.5">Lower</text>
+                <text x="300" y="210" font-size="10.5">Higher</text>
+              </g>
+            </svg>
+            <div class="legend">
+              <span><span class="dot" style="background:#c9a24b"></span>You</span>
+              <span><span class="dot" style="background:#0e2b22"></span>Peer median</span>
+            </div>
+            <div class="callout">&ldquo;Strong margin &mdash; but holding less cash than your peers.&rdquo; The kind of thing worth catching early.</div>
+            <div class="ex">Illustrative example &mdash; not real client data.</div>
+          </div>
+
+          <!-- floating: report assembled -->
+          <div class="ins ins-float ins-report">
+            <span class="badge" style="color:var(--green)"><span class="ck">&#10003;</span> Ready before you asked</span>
+            <div class="row"><span>September P&amp;L &mdash; assembled</span></div>
+            <div class="row"><span>Books current as of today</span></div>
+          </div>
+
+          <!-- floating: issue flagged -->
+          <div class="ins ins-float ins-alert">
+            <span class="badge" style="color:var(--gold-dk)"><span class="gdot"></span> Heads up &mdash; early</span>
+            <div class="row"><span>HST instalment due in 12 days</span></div>
+            <div class="row"><span>Amazon margin slipping, 3 mo.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRUST STATS -->
+    <div class="stats">
+      <div class="full">
+        <div class="stat"><b>120+</b><span>businesses supported</span></div>
+        <div class="stat-sep"></div>
+        <div class="stat"><b>100%</b><span>on-time filings</span></div>
+        <div class="stat-sep"></div>
+        <div class="stat"><b>Year-round</b><span>a partner, not a visitor</span></div>
+        <div class="stat-sep"></div>
+        <div class="stat"><b>Ontario</b><span>serving all of Canada</span></div>
+      </div>
+    </div>
+
+    <!-- RELEVANCE STRIP -->
+    <div class="rel">
+      <div class="full reveal">
+        <span class="lab">Built for how you sell</span>
+        <span class="chip">Shopify</span>
+        <span class="chip">Amazon</span>
+        <span class="chip">WooCommerce</span>
+        <span class="chip">Own storefront</span>
+        <span class="chip">Property portfolios</span>
+      </div>
+    </div>
+
+    <!-- PILLARS (the intelligence, shown) -->
+    <div class="full pillars">
+      <div class="head reveal">
+        <div class="eyebrow">The value built on top of flawless books</div>
+        <h2>The intelligence owners actually want</h2>
+      </div>
+
+      <div class="pillar reveal">
+        <div class="p-copy">
+          <div class="p-num">01</div>
+          <h3>See how you compare</h3>
+          <p>Your numbers mean more next to businesses like yours. We show you where you lead, where you
+          lag, and which gap is worth closing first &mdash; margin, cash, cost, corridor by corridor.</p>
+          <a class="p-link" href="/how-we-work/">How the benchmarking works &rarr;</a>
+        </div>
+        <div class="p-media">
+          <div class="mock">
+            <div class="mh"><span class="t">Peer benchmark</span><span class="tag">This quarter</span></div>
+            <div class="mrow"><span>Gross margin</span><span class="rt">Top 20% of peers</span></div>
+            <div class="mrow"><span>Cash on hand</span><span class="rt">Below peer median</span></div>
+            <div class="mrow"><span>Cost efficiency</span><span class="rt">Middle of the pack</span></div>
+            <div class="ex">Illustrative example &mdash; not real client data.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pillar reveal">
+        <div class="p-copy">
+          <div class="p-num">02</div>
+          <h3>The work, already done</h3>
+          <p>Reconciliation, categorization, payout matching, report assembly &mdash; the repetitive work
+          technology now handles quietly in the background. Your books stay current, and the reports are
+          waiting before you think to ask.</p>
+          <a class="p-link" href="/how-we-work/">What stays handled &rarr;</a>
+        </div>
+        <div class="p-media">
+          <div class="mock">
+            <div class="mh"><span class="t">This month, handled</span><span class="tag">Auto</span></div>
+            <div class="mrow"><span class="ck">&#10003;</span> Bank &amp; card reconciliation<span class="rt">Done</span></div>
+            <div class="mrow"><span class="ck">&#10003;</span> Amazon &amp; Shopify payouts matched<span class="rt">Done</span></div>
+            <div class="mrow"><span class="ck">&#10003;</span> September management pack<span class="rt">Ready</span></div>
+            <div class="ex">Illustrative example.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pillar reveal">
+        <div class="p-copy">
+          <div class="p-num">03</div>
+          <h3>Caught before it's costly</h3>
+          <p>Because the books are current, issues surface while there's still time to act &mdash; a filing
+          date approaching, margin quietly slipping, cash dipping below your buffer. Guidance, early,
+          not a surprise at year-end.</p>
+          <a class="p-link" href="/how-we-work/">How we flag things early &rarr;</a>
+        </div>
+        <div class="p-media">
+          <div class="mock">
+            <div class="mh"><span class="t">Worth a look</span><span class="tag" style="color:var(--gold-dk)">Early</span></div>
+            <div class="mrow"><span class="gdot"></span> HST instalment due<span class="rt">in 12 days</span></div>
+            <div class="mrow"><span class="gdot"></span> Amazon margin down 3 mo.<span class="rt">&minus;4 pts</span></div>
+            <div class="mrow"><span class="gdot"></span> Cash below 60-day buffer<span class="rt">review</span></div>
+            <div class="ex">Illustrative example.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FIVE QUESTIONS -->
+    <section class="zone zone-2"><div class="full section">
+      <div class="eyebrow reveal">Everything you're quietly wondering</div>
+      <h2 class="reveal">The questions owners actually ask</h2>
+      <div class="qgrid">
+        <div class="qcard reveal"><h3>Do they understand my business?</h3><p>We've built and run an e-commerce brand and administered property operations. You'll never have to teach us your industry.</p></div>
+        <div class="qcard reveal"><h3>What will this really cost me?</h3><p>Full, realistic scope from the first conversation &mdash; you always know exactly what you're getting and what it costs. You pay for outcomes, not hours.</p></div>
+        <div class="qcard reveal"><h3>Will they be there when I need them?</h3><p>A year-round partner, not a tax-season visitor. Your books stay current, so issues surface while there's still time to act.</p></div>
+        <div class="qcard reveal"><h3>Can they help me grow?</h3><p>See how you compare to businesses like yours, get the repetitive work simply handled, and receive guidance that scales as you do.</p></div>
+        <div class="qcard reveal"><h3>Can I stop thinking about this?</h3><p>The whole financial side handled, current, and working for you &mdash; so your attention goes back to running the business.</p></div>
+      </div>
+    </div></section>
+
+    <!-- VERTICALS -->
+    <div class="full section">
+      <div class="eyebrow reveal">Built for how you actually operate</div>
+      <h2 class="reveal">Two focused verticals</h2>
+      <div class="vgrid">
+        <div class="vcard reveal">
+          <h3>E-commerce brands</h3>
+          <ul>
+            <li>Your true margin by channel &mdash; the number that lands in the bank.</li>
+            <li>Fees, refunds, and payout holdbacks brought into the light.</li>
+            <li>Inventory and cash-flow clarity before the next big buy.</li>
+          </ul>
+        </div>
+        <div class="vcard reveal">
+          <h3>Property management</h3>
+          <ul>
+            <li>How your portfolio really performs &mdash; occupancy, arrears, NOI.</li>
+            <li>Owner and investor reporting that builds trust, without the manual hours.</li>
+            <li>Operating costs and reserves kept in view, corridor by corridor.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOUNDER BAND -->
+    <section class="founder">
+      <div class="full">
+        <div class="photo reveal">
+          <img src="/assets/liliana.jpg" alt="Liliana Stratan, Principal at SGML Accounting" width="900" height="1125">
+        </div>
+        <div class="reveal">
+          <div class="eyebrow">Who you're working with</div>
+          <h2>An operator who reads a P&amp;L the way you do.</h2>
+          <p>SGML is led by principals who have founded and run businesses in both verticals &mdash; not
+          just filed their returns. So the advice isn't textbook; it's what we'd do in your seat, having
+          been there.</p>
+          <p>Flawless books are a given. What you're really buying is a year-round partner who has already
+          handled the boring work with technology, and is across the table talking about what to do next.</p>
+          <div class="sig">Liliana Stratan<small>Principal &middot; B.Eng &middot; MBA</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SMARTER ECONOMICS -->
+    <section class="zone zone-white"><div class="full section">
+      <div class="eyebrow reveal">Why premium doesn't cost what it used to</div>
+      <h2 class="reveal">A smarter delivery model</h2>
+      <div class="vcard reveal" style="background:var(--cream-2)">
+        <p style="margin:0 0 12px">Technology now handles the repetitive, hours-intensive work that historically drove up the cost of professional accounting. That frees our experts for the work that actually creates value: interpreting how you compare, flagging what's coming, and guiding what to do next.</p>
+        <p style="margin:0"><strong>The efficiency is passed to you.</strong> Lower cost is a sign of a smarter delivery model, not a smaller ambition &mdash; more of every dollar goes toward insight instead of overhead.</p>
+      </div>
+    </div></section>
+  </main>
+
+  <!-- CTA BAND -->
+  <section class="band">
+    <div class="full">
+      <h2>Start with a clear picture of where you stand.</h2>
+      <p>A free 20-minute review: what your numbers really mean, how you compare, and what's worth doing next. No pitch, no pressure.</p>
+      <a class="cta-btn" href="/book/">Book your review &rarr;</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="bar">
+      <div>&copy; 2026 SGML Accounting &mdash; go beyond the numbers.</div>
+      <div class="links">
+        <a href="/how-we-work/">How we work</a>
+        <a href="/about/">About</a>
+        <a href="/insights/">Insights</a>
+        <a href="/terms/">Terms</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="mailto:info@sgmlaccounting.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+  <div class="mobile-cta"><a href="/book/">Book a 20-minute review</a></div>
+
+  <script>
+    // scroll-based reveal — reliable across renderers, and can never leave content hidden
+    (function(){
+      var els = [].slice.call(document.querySelectorAll('.reveal'));
+      function check(){
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        for(var i=els.length-1;i>=0;i--){
+          if(els[i].getBoundingClientRect().top < vh*0.9){ els[i].classList.add('in'); els.splice(i,1); }
+        }
+      }
+      check();
+      window.addEventListener('scroll', check, {passive:true});
+      window.addEventListener('resize', check);
+      window.addEventListener('load', check);
+      // ultimate safety: reveal anything still hidden after 2.5s
+      setTimeout(function(){ els.forEach(function(e){e.classList.add('in');}); }, 2500);
+    })();
+  </script>
+</body>
+</html>
