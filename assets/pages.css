@@ -100,7 +100,10 @@ th{background:var(--cream-2);font-weight:600;color:var(--green)}
 .site-footer .bar{max-width:1080px;margin:0 auto;padding:0 24px;
   display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center}
 .site-footer a{color:var(--muted)}
-.site-footer .links{display:flex;gap:18px;flex-wrap:wrap}
+.site-footer .links{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+.site-footer .social{display:flex;gap:14px;align-items:center}
+.site-footer .social a{display:inline-flex;color:var(--muted);line-height:0;transition:color .15s ease}
+.site-footer .social a:hover{color:var(--green)}
 
 /* ---- tonal section zones (premium rhythm, not one flat cream sheet) ---- */
 .zone{width:100%}
