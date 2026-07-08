@@ -65,6 +65,9 @@ main strong{color:var(--green-2)}
 .lead{font-size:1.2rem;color:var(--muted);margin-bottom:8px;line-height:1.6}
 .updated{color:var(--muted);font-size:14px;margin-bottom:8px}
 .rule{height:1px;background:var(--line);border:0;margin:34px 0}
+.article-hero{margin:6px 0 26px}
+.article-hero img{width:100%;height:auto;max-height:420px;object-fit:cover;
+  border-radius:14px;border:1px solid var(--line);display:block}
 .answer{background:var(--cream-2);border-left:3px solid var(--gold);
   padding:18px 22px;border-radius:0 10px 10px 0;font-size:1.12rem;margin:0 0 28px}
 .pullquote{font-family:var(--font-display);font-size:1.5rem;line-height:1.38;
